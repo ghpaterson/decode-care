@@ -6,7 +6,7 @@ import homepageImage from "../public/homepageImage.svg";
 export default function Home() {
   return (
     <>
-      <main className="h-screen bg-gradient-to-b from-white to bg-yellow-500 px-10 lg:px-32">
+      <main className="h-screen bg-gradient-to-b from-white to bg-yellow-500 px-10 lg:px-32 font-poppins">
         <NavBar />
         <section className="mt-20">
           <p className="text-xl lg:text-6xl">
@@ -20,12 +20,12 @@ export default function Home() {
               <Image
                 src={homepageImage}
                 width={550}
-                alt="Family reading Image"
+                alt="Family Reading Image"
               />
             </div>
             <div className="flex justify-center lg:order-1 mt-10 lg:mt-20">
               <Link href="/MainMenu">
-                <button className="lg:text-2xl border-blue-500 border-solid border-2 rounded-full px-2 py-2 hover:bg-blue-500 hover:text-white">
+                <button className="lg:text-2xl border-blue-500 border-solid border-2 rounded-full px-6 py-2 hover:bg-blue-500 hover:text-yellow-500">
                   Get Started
                 </button>
               </Link>
