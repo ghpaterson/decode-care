@@ -16,7 +16,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="py-6 text-3xl">
+      <nav className="py-6 lg:text-3xl">
         <div className="flex justify-between">
           <h1>Decode Care</h1>
           {showMainMenuLink && <Link href="/MainMenu">Menu</Link>}

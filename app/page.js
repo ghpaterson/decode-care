@@ -1,31 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "@/components/NavBar";
+import homepageImage from "../public/homepageImage.svg";
 
 export default function Home() {
   return (
     <>
-      <main className="h-screen bg-yellow-200 px-32">
+      <main className="h-screen bg-gradient-to-b from-white to bg-yellow-500 px-10 lg:px-32">
         <NavBar />
-        <section className="mt-24">
-          <p className="text-5xl">
-            Transform reading struggles into
-            <br />
-            reading<span className="font-bold text-blue-500">
-              {" "}
-              STRENGTHS
-            </span>{" "}
-            with our simple
-            <br />
-            exercises
+        <section className="mt-20">
+          <p className="text-xl lg:text-6xl">
+            Transform reading struggles
+            <br /> into reading
+            <span className="font-bold text-blue-500"> STRENGTHS</span> with
+            <br /> our simple exercises
           </p>
-
-          <div className="my-12">
-            <Link href="/MainMenu">
-              <button className="text-xl border-blue-500 border-solid border-2 rounded-full px-2 py-2 hover:bg-blue-500 hover:text-white">
-                Get Started
-              </button>
-            </Link>
+          <div className="lg:flex justify-between">
+            <div className="mt-20 lg:-mt-6 lg:order-2">
+              <Image
+                src={homepageImage}
+                width={550}
+                alt="Family reading Image"
+              />
+            </div>
+            <div className="flex justify-center lg:order-1 mt-10 lg:mt-20">
+              <Link href="/MainMenu">
+                <button className="lg:text-2xl border-blue-500 border-solid border-2 rounded-full px-2 py-2 hover:bg-blue-500 hover:text-white">
+                  Get Started
+                </button>
+              </Link>
+            </div>
           </div>
         </section>
       </main>
