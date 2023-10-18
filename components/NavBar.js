@@ -7,6 +7,7 @@ import logoSphere from "../public/logoSphere.svg";
 
 export default function NavBar() {
   const [showMainMenuLink, setShowMainMenuLink] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(false);
 
   useEffect(() => {
     // Check if the current pathname matches "/CVCMenu" or "/HFWMenu"
@@ -14,11 +15,17 @@ export default function NavBar() {
     setShowMainMenuLink(
       currentPathname === "/CVCMenu" || currentPathname === "/HFWMenu"
     );
+    //check if the current pathname is the homepage
+    setIsHomePage(currentPathname === "/");
   }, []);
 
   return (
     <>
-      <nav className="py-6 lg:text-3xl text-white font-poppins">
+      <nav
+        className={`py-6 lg:text-3xl text-white font-poppins ${
+          isHomePage ? "text-white" : "text-black"
+        }`}
+      >
         <div className="flex justify-between">
           <Link href="/">
             <div className="flex items-center gap-2">
