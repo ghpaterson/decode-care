@@ -18,7 +18,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="py-6 lg:text-3xl font-poppins">
+      <nav className="py-6 lg:text-3xl text-white font-poppins">
         <div className="flex justify-between">
           <Link href="/">
             <div className="flex items-center gap-2">
