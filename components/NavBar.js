@@ -22,7 +22,7 @@ export default function NavBar() {
   return (
     <>
       <nav
-        className={`py-6 lg:text-3xl text-white font-poppins ${
+        className={`py-6 lg:text-3xl font-poppins ${
           isHomePage ? "text-white" : "text-black"
         }`}
       >
