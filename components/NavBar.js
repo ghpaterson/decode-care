@@ -34,8 +34,9 @@ export default function NavBar() {
               <h1>Decode Care</h1>
             </div>
           </Link>
-
-          {showMainMenuLink && <Link href="/MainMenu">Menu</Link>}
+          <div className="flex items-center">
+            {showMainMenuLink && <Link href="/MainMenu">Menu</Link>}
+          </div>
         </div>
       </nav>
     </>

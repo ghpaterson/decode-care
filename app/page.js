@@ -15,7 +15,7 @@ export default function Home() {
             <span className=" text-yellow-400"> STRENGTHS</span>
           </p>
           <p className="text-white text-sm lg:text-xl mt-6">
-            Our simples exercises will assist your child <br />
+            Our simple exercises will assist your child <br />
             on their journey to become a better reader
           </p>
           <div className="lg:flex justify-between">
