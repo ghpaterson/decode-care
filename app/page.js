@@ -6,7 +6,7 @@ import homepageImage from "../public/homepageImage.svg";
 export default function Home() {
   return (
     <>
-      <main className="h-screen bg-gradient-to-b from-blue-300 to bg-blue-700 px-10 lg:px-32 font-poppins">
+      <main className="h-screen bg-gradient-to-b from-blue-300 to bg-blue-800 px-10 lg:px-32 font-poppins">
         <NavBar />
         <section className="lg:mt-20">
           <p className="text-xl lg:text-6xl text-white">
