@@ -18,6 +18,7 @@ export default function MainMenu() {
             linkHref="/CVCMenu"
             cardColor="bg-gradient-to-b from-white to bg-blue-500"
             imageWidth={150}
+            buttonColor="bg-blue-500"
           />
           <MainMenuCard
             imageScr={girlReading}
@@ -26,6 +27,17 @@ export default function MainMenu() {
             linkHref="/HFWMenu"
             cardColor="bg-gradient-to-b from-white to bg-yellow-500"
             imageWidth={200}
+            buttonColor="bg-yellow-500"
+          />
+          <MainMenuCard
+            imageScr={girlReading}
+            title="Coming Soon"
+            description="Watch this space for upcoming exercises"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-gray-500"
+            imageWidth={200}
+            buttonColor="bg-gray-500"
+            filter="filter grayscale"
           />
         </div>
       </main>
