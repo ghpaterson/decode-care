@@ -87,29 +87,32 @@ export default function CVC() {
 
   return (
     <>
-      <main className="px-10 lg:px-32">
+      <main className="px-10 lg:px-32 font-poppins">
         <NavBar />
         <section className="mt-20">
-          <div className="flex justify-center">
-            <h1 className="font-poppins text-5xl lg:text-6xl text-bittersweet">
-              Let's Read
+          <div className="flex flex-col justify-center items-center gap-4">
+            <h1 className="text-2xl lg:text-4xl">
+              Let's Read Real and Nonsense Words
             </h1>
+            <h2 className="lg:text-2xl">
+              Click the boxes to change the letters
+            </h2>
           </div>
-          <div className="flex justify-center gap-4 lg:gap-14 my-10 px-6 font-comic">
+          <div className="flex justify-center gap-4 lg:gap-2 my-10 px-6 text-5xl lg:text-8xl">
             <div
-              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-gray-900 text-6xl hover:cursor-pointer"
+              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleFirstBoxClick}
             >
               {firstLetter}
             </div>
             <div
-              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-bittersweet text-6xl hover:cursor-pointer"
+              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-bittersweet hover:cursor-pointer"
               onClick={handleVowelClick}
             >
               {vowel}
             </div>
             <div
-              className=" flex justify-center items-center h-40 w-40  lg:h-60 lg:w-60 bg-gray-100 text-gray-900 text-6xl hover:cursor-pointer"
+              className=" flex justify-center items-center h-40 w-40  lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleLastBoxClick}
             >
               {lastLetter}
@@ -119,7 +122,7 @@ export default function CVC() {
         <div className="flex justify-center">
           <button
             onClick={handleResetClick}
-            className="bg-bittersweet font-comic text-bone text-xl py-2 px-6 rounded-xl"
+            className="text-xl py-2 px-6 rounded-full bg-blue-500 text-white"
           >
             Reset
           </button>

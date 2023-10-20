@@ -8,15 +8,24 @@ import logoSphere from "../public/logoSphere.svg";
 export default function NavBar() {
   const [showMainMenuLink, setShowMainMenuLink] = useState(false);
   const [isHomePage, setIsHomePage] = useState(false);
+  // const [showCVCBackLink, setShowCVCBackLink] = useState(false);
 
   useEffect(() => {
     // Check if the current pathname matches "/CVCMenu" or "/HFWMenu"
     const currentPathname = window.location.pathname;
     setShowMainMenuLink(
-      currentPathname === "/CVCMenu" || currentPathname === "/HFWMenu"
+      currentPathname === "/CVCMenu" ||
+        currentPathname === "/HFWMenu" ||
+        currentPathname === "/CVC" // at the moment the menu link on CVC will take you back to main menu rather than back to CVCMenu
     );
     //check if the current pathname is the homepage
     setIsHomePage(currentPathname === "/");
+    // setShowCVCBackLink(
+    //   currentPathname !== "/" ||
+    //     currentPathname !== "MainMenu" ||
+    //     currentPathname !== "/CVCMenu" ||
+    //     currentPathname !== "/HFWMenu"
+    // );
   }, []);
 
   return (
