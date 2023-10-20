@@ -30,7 +30,7 @@ export default function CVCMenu() {
             title="Exercise One"
             subTitle="CVC/C Words"
             description="This is an example explaining the exercise"
-            linkHref=""
+            linkHref="/CVC"
             cardColor="bg-gradient-to-b from-white to bg-blue-500"
             imageWidth={150}
             buttonColor="bg-blue-500"
