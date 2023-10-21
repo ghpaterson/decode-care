@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "@/components/NavBar";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 export default function CVC() {
-  const [vowel, setVowel] = useState("?");
+  const [vowelBox, setVowelBox] = useState("?");
   const vowels = ["a", "e", "i", "o", "u"];
 
   const [firstLetter, setFirstLetter] = useState("?");
@@ -47,8 +50,8 @@ export default function CVC() {
   ];
 
   const handleVowelClick = () => {
-    const newVowel = vowels[Math.floor(Math.random() * vowels.length)];
-    setVowel(newVowel);
+    const newVowelBox = vowels[Math.floor(Math.random() * vowels.length)];
+    setVowelBox(newVowelBox);
   };
 
   const handleFirstBoxClick = () => {
@@ -109,7 +112,7 @@ export default function CVC() {
               className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-bittersweet hover:cursor-pointer"
               onClick={handleVowelClick}
             >
-              {vowel}
+              {vowelBox}
             </div>
             <div
               className=" flex justify-center items-center h-40 w-40  lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
