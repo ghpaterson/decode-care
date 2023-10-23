@@ -7,10 +7,12 @@ import { collection, getDocs } from "firebase/firestore";
 export default function Practice() {
   const [vowelsData, setVowelsData] = useState([]);
   const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
+  const [firstBoxData, setFirstBoxData] = useState([]);
+  const [currentFirstBoxIndex, setCurrentFirstBoxIndex] = useState(null);
 
   useEffect(() => {
     // Fetch data from the "vowels" collection in Firestore
-    const fetchData = async () => {
+    const fetchVowelData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "vowels"));
         const vowelsData = querySnapshot.docs.map((doc) => doc.data());
@@ -21,7 +23,24 @@ export default function Practice() {
       }
     };
 
-    fetchData();
+    // Fetch the data from the cvcFirstBoxOne collection which is the consonants for the first box
+    const fetchFirstBoxData = async () => {
+      try {
+        const queryFirstBoxSnapshot = await getDocs(
+          collection(db, "cvcFirstBoxOne")
+        );
+        const firstBoxData = queryFirstBoxSnapshot.docs.map((doc) =>
+          doc.data()
+        );
+        setFirstBoxData(firstBoxData);
+        console.log(firstBoxData);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
+
+    fetchVowelData();
+    fetchFirstBoxData();
   }, []);
 
   const handleVowelClick = () => {
@@ -30,6 +49,14 @@ export default function Practice() {
     console.log("Vowels Data:", vowelsData); // Log the vowelsData
     setCurrentVowelIndex(vowelsData[randomIndex]?.name);
     console.log("Current Vowel Index:", currentVowelIndex); // Log the currentVowelIndex
+  };
+
+  const handleFirstBoxClick = () => {
+    const randomFirstBoxIndex = Math.floor(Math.random() * firstBoxData.length);
+    console.log("Random Index:", randomFirstBoxIndex); // Log the random index
+    console.log("First Box Data:", firstBoxData); // Log the vowelsData
+    setCurrentFirstBoxIndex(firstBoxData[randomFirstBoxIndex]?.name);
+    console.log("Current First Box Index:", currentFirstBoxIndex); // Log the currentVowelIndex
   };
 
   return (
@@ -45,12 +72,12 @@ export default function Practice() {
             </h2>
           </div>
           <div className="flex justify-center gap-4 lg:gap-2 my-10 px-6 text-5xl lg:text-8xl">
-            {/* <div
+            <div
               className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleFirstBoxClick}
             >
-              {firstLetter}
-            </div> */}
+              {currentFirstBoxIndex !== null ? currentFirstBoxIndex : "?"}
+            </div>
             <div
               className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-black hover:cursor-pointer"
               onClick={handleVowelClick}
