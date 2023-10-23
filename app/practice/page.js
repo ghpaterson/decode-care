@@ -9,6 +9,8 @@ export default function Practice() {
   const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
   const [firstBoxData, setFirstBoxData] = useState([]);
   const [currentFirstBoxIndex, setCurrentFirstBoxIndex] = useState(null);
+  const [lastBoxData, setLastBoxData] = useState([]);
+  const [currentLastBoxIndex, setCurrentLastBoxIndex] = useState(null);
 
   useEffect(() => {
     // Fetch data from the "vowels" collection in Firestore
@@ -39,8 +41,23 @@ export default function Practice() {
       }
     };
 
+    //Fetch the data from the cvcLastBoxOne collection
+    const fetchLastBoxData = async () => {
+      try {
+        const queryLastBoxSnapshot = await getDocs(
+          collection(db, "cvcLastBoxOne")
+        );
+        const lastBoxData = queryLastBoxSnapshot.docs.map((doc) => doc.data());
+        setLastBoxData(lastBoxData);
+        console.log(lastBoxData);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
+
     fetchVowelData();
     fetchFirstBoxData();
+    fetchLastBoxData();
   }, []);
 
   const handleVowelClick = () => {
@@ -57,6 +74,20 @@ export default function Practice() {
     console.log("First Box Data:", firstBoxData); // Log the vowelsData
     setCurrentFirstBoxIndex(firstBoxData[randomFirstBoxIndex]?.name);
     console.log("Current First Box Index:", currentFirstBoxIndex); // Log the currentVowelIndex
+  };
+
+  const handleLastBoxClick = () => {
+    const randomLastBoxIndex = Math.floor(Math.random() * lastBoxData.length);
+    console.log("Random Index:", randomLastBoxIndex); // Log the random index
+    console.log("Last Box Data:", lastBoxData); // Log the vowelsData
+    setCurrentLastBoxIndex(lastBoxData[randomLastBoxIndex]?.name);
+    console.log("Current Last Box Index:", currentLastBoxIndex); // Log the currentVowelIndex
+  };
+
+  const handleResetClick = () => {
+    setCurrentVowelIndex("?");
+    setCurrentFirstBoxIndex("?");
+    setCurrentLastBoxIndex("?");
   };
 
   return (
@@ -84,22 +115,22 @@ export default function Practice() {
             >
               {currentVowelIndex !== null ? currentVowelIndex : "?"}
             </div>
-            {/* <div
+            <div
               className=" flex justify-center items-center h-40 w-40  lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleLastBoxClick}
             >
-              {lastLetter}
-            </div> */}
+              {currentLastBoxIndex !== null ? currentLastBoxIndex : "?"}
+            </div>
           </div>
         </section>
-        {/* <div className="flex justify-center">
+        <div className="flex justify-center">
           <button
             onClick={handleResetClick}
             className="text-xl py-2 px-6 rounded-full bg-blue-500 text-white"
           >
             Reset
           </button>
-        </div> */}
+        </div>
       </main>
     </>
   );
