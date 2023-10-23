@@ -1,91 +1,94 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { db } from "@/utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 import NavBar from "@/components/NavBar";
-import firebase from "firebase/app";
-import "firebase/firestore";
 
-export default function CVC() {
-  const [vowelBox, setVowelBox] = useState("?");
-  const vowels = ["a", "e", "i", "o", "u"];
+export default function Practice() {
+  const [vowelsData, setVowelsData] = useState([]);
+  const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
+  const [firstBoxData, setFirstBoxData] = useState([]);
+  const [currentFirstBoxIndex, setCurrentFirstBoxIndex] = useState(null);
+  const [lastBoxData, setLastBoxData] = useState([]);
+  const [currentLastBoxIndex, setCurrentLastBoxIndex] = useState(null);
 
-  const [firstLetter, setFirstLetter] = useState("?");
-  const firstBox = [
-    "b",
-    "c",
-    "d",
-    "f",
-    "g",
-    "h",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "p",
-    "r",
-    "s",
-    "t",
-    "v",
-    "w",
-    "y",
-    "z",
-  ];
+  useEffect(() => {
+    // Fetch data from the "vowels" collection in Firestore
+    const fetchVowelData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "vowels"));
+        const vowelsData = querySnapshot.docs.map((doc) => doc.data());
+        setVowelsData(vowelsData);
+        console.log(vowelsData);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
 
-  const [lastLetter, setLastLetter] = useState("?");
-  const lastBox = [
-    "b",
-    "ck",
-    "d",
-    "ff",
-    "g",
-    "ll",
-    "m",
-    "n",
-    "p",
-    "ss",
-    "t",
-    "x",
-    "zz",
-  ];
+    // Fetch the data from the cvcFirstBoxOne collection which is the consonants for the first box
+    const fetchFirstBoxData = async () => {
+      try {
+        const queryFirstBoxSnapshot = await getDocs(
+          collection(db, "cvcFirstBoxOne")
+        );
+        const firstBoxData = queryFirstBoxSnapshot.docs.map((doc) =>
+          doc.data()
+        );
+        setFirstBoxData(firstBoxData);
+        console.log(firstBoxData);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
+
+    //Fetch the data from the cvcLastBoxOne collection
+    const fetchLastBoxData = async () => {
+      try {
+        const queryLastBoxSnapshot = await getDocs(
+          collection(db, "cvcLastBoxOne")
+        );
+        const lastBoxData = queryLastBoxSnapshot.docs.map((doc) => doc.data());
+        setLastBoxData(lastBoxData);
+        console.log(lastBoxData);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
+
+    fetchVowelData();
+    fetchFirstBoxData();
+    fetchLastBoxData();
+  }, []);
 
   const handleVowelClick = () => {
-    const newVowelBox = vowels[Math.floor(Math.random() * vowels.length)];
-    setVowelBox(newVowelBox);
+    const randomIndex = Math.floor(Math.random() * vowelsData.length);
+    console.log("Random Index:", randomIndex); // Log the random index
+    console.log("Vowels Data:", vowelsData); // Log the vowelsData
+    setCurrentVowelIndex(vowelsData[randomIndex]?.name);
+    console.log("Current Vowel Index:", currentVowelIndex); // Log the currentVowelIndex
   };
 
   const handleFirstBoxClick = () => {
-    const newFirstLetter =
-      firstBox[Math.floor(Math.random() * firstBox.length)];
-    setFirstLetter(newFirstLetter);
+    const randomFirstBoxIndex = Math.floor(Math.random() * firstBoxData.length);
+    console.log("Random Index:", randomFirstBoxIndex); // Log the random index
+    console.log("First Box Data:", firstBoxData); // Log the vowelsData
+    setCurrentFirstBoxIndex(firstBoxData[randomFirstBoxIndex]?.name);
+    console.log("Current First Box Index:", currentFirstBoxIndex); // Log the currentVowelIndex
   };
 
   const handleLastBoxClick = () => {
-    let newLastBox = lastBox;
-    if (firstLetter === "f" && vowel === "u") {
-      newLastBox = lastBox.filter((letter) => letter !== "ck");
-    }
-    if (firstLetter === "c" && vowel === "o") {
-      newLastBox = lastBox.filter((letter) => letter !== "ck");
-    }
-    if (firstLetter === "w" && vowel === "o") {
-      newLastBox = lastBox.filter((letter) => letter !== "g");
-    }
-    if (firstLetter === "s" && vowel === "e") {
-      newLastBox = lastBox.filter((letter) => letter !== "x");
-    }
-    if (firstLetter === "d" && vowel === "i") {
-      newLastBox = lastBox.filter((letter) => letter !== "ck");
-    }
-    const newLastLetter =
-      newLastBox[Math.floor(Math.random() * newLastBox.length)];
-    setLastLetter(newLastLetter);
+    const randomLastBoxIndex = Math.floor(Math.random() * lastBoxData.length);
+    console.log("Random Index:", randomLastBoxIndex); // Log the random index
+    console.log("Last Box Data:", lastBoxData); // Log the vowelsData
+    setCurrentLastBoxIndex(lastBoxData[randomLastBoxIndex]?.name);
+    console.log("Current Last Box Index:", currentLastBoxIndex); // Log the currentVowelIndex
   };
 
   const handleResetClick = () => {
-    setVowel("?");
-    setFirstLetter("?");
-    setLastLetter("?");
+    setCurrentVowelIndex("?");
+    setCurrentFirstBoxIndex("?");
+    setCurrentLastBoxIndex("?");
   };
 
   return (
@@ -106,19 +109,19 @@ export default function CVC() {
               className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleFirstBoxClick}
             >
-              {firstLetter}
+              {currentFirstBoxIndex !== null ? currentFirstBoxIndex : "?"}
             </div>
             <div
-              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-bittersweet hover:cursor-pointer"
+              className=" flex justify-center items-center h-40 w-40 lg:h-60 lg:w-60 bg-gray-100 text-black hover:cursor-pointer"
               onClick={handleVowelClick}
             >
-              {vowelBox}
+              {currentVowelIndex !== null ? currentVowelIndex : "?"}
             </div>
             <div
               className=" flex justify-center items-center h-40 w-40  lg:h-60 lg:w-60 bg-gray-100 text-gray-900 hover:cursor-pointer"
               onClick={handleLastBoxClick}
             >
-              {lastLetter}
+              {currentLastBoxIndex !== null ? currentLastBoxIndex : "?"}
             </div>
           </div>
         </section>
