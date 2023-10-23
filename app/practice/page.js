@@ -13,75 +13,62 @@ export default function Practice() {
   const [currentLastBoxIndex, setCurrentLastBoxIndex] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the "vowels" collection in Firestore
-    const fetchVowelData = async () => {
+    const fetchData = async (collectionName, setDataCallback) => {
       try {
-        const querySnapshot = await getDocs(collection(db, "vowels"));
-        const vowelsData = querySnapshot.docs.map((doc) => doc.data());
-        setVowelsData(vowelsData);
-        console.log(vowelsData);
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        setDataCallback(data);
+        console.log(data);
       } catch (error) {
         console.error("Error getting documents: ", error);
       }
     };
 
-    // Fetch the data from the cvcFirstBoxOne collection which is the consonants for the first box
-    const fetchFirstBoxData = async () => {
-      try {
-        const queryFirstBoxSnapshot = await getDocs(
-          collection(db, "cvcFirstBoxOne")
-        );
-        const firstBoxData = queryFirstBoxSnapshot.docs.map((doc) =>
-          doc.data()
-        );
-        setFirstBoxData(firstBoxData);
-        console.log(firstBoxData);
-      } catch (error) {
-        console.error("Error getting documents: ", error);
-      }
-    };
-
-    //Fetch the data from the cvcLastBoxOne collection
-    const fetchLastBoxData = async () => {
-      try {
-        const queryLastBoxSnapshot = await getDocs(
-          collection(db, "cvcLastBoxOne")
-        );
-        const lastBoxData = queryLastBoxSnapshot.docs.map((doc) => doc.data());
-        setLastBoxData(lastBoxData);
-        console.log(lastBoxData);
-      } catch (error) {
-        console.error("Error getting documents: ", error);
-      }
-    };
-
-    fetchVowelData();
-    fetchFirstBoxData();
-    fetchLastBoxData();
+    fetchData("vowels", setVowelsData);
+    fetchData("cvcFirstBoxOne", setFirstBoxData);
+    fetchData("cvcLastBoxOne", setLastBoxData);
   }, []);
 
+  const handleBoxClick = (data, setCurrentIndex) => {
+    const randomIndex = Math.floor(Math.random() * data.length);
+    setCurrentIndex(data[randomIndex]?.name);
+  };
+
   const handleVowelClick = () => {
-    const randomIndex = Math.floor(Math.random() * vowelsData.length);
-    console.log("Random Index:", randomIndex); // Log the random index
-    console.log("Vowels Data:", vowelsData); // Log the vowelsData
-    setCurrentVowelIndex(vowelsData[randomIndex]?.name);
-    console.log("Current Vowel Index:", currentVowelIndex); // Log the currentVowelIndex
+    handleBoxClick(vowelsData, setCurrentVowelIndex);
   };
 
   const handleFirstBoxClick = () => {
-    const randomFirstBoxIndex = Math.floor(Math.random() * firstBoxData.length);
-    console.log("Random Index:", randomFirstBoxIndex); // Log the random index
-    console.log("First Box Data:", firstBoxData); // Log the vowelsData
-    setCurrentFirstBoxIndex(firstBoxData[randomFirstBoxIndex]?.name);
-    console.log("Current First Box Index:", currentFirstBoxIndex); // Log the currentVowelIndex
+    handleBoxClick(firstBoxData, setCurrentFirstBoxIndex);
   };
 
   const handleLastBoxClick = () => {
-    const randomLastBoxIndex = Math.floor(Math.random() * lastBoxData.length);
-    console.log("Random Index:", randomLastBoxIndex); // Log the random index
-    console.log("Last Box Data:", lastBoxData); // Log the vowelsData
-    setCurrentLastBoxIndex(lastBoxData[randomLastBoxIndex]?.name);
-    console.log("Current Last Box Index:", currentLastBoxIndex); // Log the currentVowelIndex
+    const randomIndex = Math.floor(Math.random() * lastBoxData.length);
+    const randomLastBox = lastBoxData[randomIndex]?.name;
+
+    // Check the conditions
+    if (
+      (currentFirstBoxIndex === "f" &&
+        currentVowelIndex === "u" &&
+        randomLastBox === "ck") ||
+      (currentFirstBoxIndex === "c" &&
+        currentVowelIndex === "o" &&
+        randomLastBox === "ck") ||
+      (currentFirstBoxIndex === "w" &&
+        currentVowelIndex === "o" &&
+        randomLastBox === "g") ||
+      (currentFirstBoxIndex === "s" &&
+        currentVowelIndex === "e" &&
+        randomLastBox === "x") ||
+      (currentFirstBoxIndex === "d" &&
+        currentVowelIndex === "i" &&
+        randomLastBox === "ck")
+    ) {
+      // If the conditions are met, rerun the function to get a new randomLastBox
+      handleLastBoxClick();
+    } else {
+      setCurrentLastBoxIndex(randomLastBox);
+    }
   };
 
   const handleResetClick = () => {
