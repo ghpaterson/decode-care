@@ -50,7 +50,7 @@ export default function CVCMenu() {
             title="Exercise Three"
             subTitle="CCVC/C Words with Silent Letters"
             description="This is an example explaining the exercise"
-            linkHref=""
+            linkHref="/CCVCb"
             cardColor="bg-gradient-to-b from-white to bg-blue-500"
             imageWidth={150}
             buttonColor="bg-blue-500"

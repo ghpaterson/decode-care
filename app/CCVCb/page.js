@@ -5,7 +5,7 @@ import { db } from "@/utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import NavBar from "@/components/NavBar";
 
-export default function CCVCa() {
+export default function CCVCb() {
   const [vowelsData, setVowelsData] = useState([]);
   const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
   const [firstBoxData, setFirstBoxData] = useState([]);
@@ -25,9 +25,9 @@ export default function CCVCa() {
       }
     };
 
-    //the vowels and LastBox is the same data that is used in exercise one, only the first box changes
+    // the vowels and last box are the same as used in exercise one, only the first box is new data
     fetchData("vowels", setVowelsData);
-    fetchData("cvcFirstBoxTwo", setFirstBoxData);
+    fetchData("cvcFirstBoxThree", setFirstBoxData);
     fetchData("cvcLastBoxOne", setLastBoxData);
   }, []);
 
@@ -45,32 +45,7 @@ export default function CCVCa() {
   };
 
   const handleLastBoxClick = () => {
-    const randomIndex = Math.floor(Math.random() * lastBoxData.length);
-    const randomLastBox = lastBoxData[randomIndex]?.name;
-
-    // Check the conditions
-    if (
-      (currentFirstBoxIndex === "sh" &&
-        currentVowelIndex === "i" &&
-        randomLastBox === "t") ||
-      (currentFirstBoxIndex === "cr" &&
-        currentVowelIndex === "a" &&
-        randomLastBox === "p") ||
-      (currentFirstBoxIndex === "sh" &&
-        currentVowelIndex === "a" &&
-        randomLastBox === "t") ||
-      (currentFirstBoxIndex === "s" &&
-        currentVowelIndex === "e" &&
-        randomLastBox === "x") ||
-      (currentFirstBoxIndex === "d" &&
-        currentVowelIndex === "i" &&
-        randomLastBox === "ck")
-    ) {
-      // If the conditions are met, rerun the function to get a new randomLastBox
-      handleLastBoxClick();
-    } else {
-      setCurrentLastBoxIndex(randomLastBox);
-    }
+    handleBoxClick(lastBoxData, setCurrentLastBoxIndex);
   };
 
   const handleResetClick = () => {
