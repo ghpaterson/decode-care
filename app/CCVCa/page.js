@@ -26,7 +26,7 @@ export default function CVC() {
     };
 
     fetchData("vowels", setVowelsData);
-    fetchData("cvcFirstBoxOne", setFirstBoxData);
+    fetchData("cvcFirstBoxTwo", setFirstBoxData);
     fetchData("cvcLastBoxOne", setLastBoxData);
   }, []);
 
@@ -49,15 +49,15 @@ export default function CVC() {
 
     // Check the conditions
     if (
-      (currentFirstBoxIndex === "f" &&
-        currentVowelIndex === "u" &&
-        randomLastBox === "ck") ||
-      (currentFirstBoxIndex === "c" &&
-        currentVowelIndex === "o" &&
-        randomLastBox === "ck") ||
-      (currentFirstBoxIndex === "w" &&
-        currentVowelIndex === "o" &&
-        randomLastBox === "g") ||
+      (currentFirstBoxIndex === "sh" &&
+        currentVowelIndex === "i" &&
+        randomLastBox === "t") ||
+      (currentFirstBoxIndex === "cr" &&
+        currentVowelIndex === "a" &&
+        randomLastBox === "p") ||
+      (currentFirstBoxIndex === "sh" &&
+        currentVowelIndex === "a" &&
+        randomLastBox === "t") ||
       (currentFirstBoxIndex === "s" &&
         currentVowelIndex === "e" &&
         randomLastBox === "x") ||
