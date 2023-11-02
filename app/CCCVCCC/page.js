@@ -5,7 +5,7 @@ import { db } from "@/utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import NavBar from "@/components/NavBar";
 
-export default function CCVCC() {
+export default function CCCVCCC() {
   const [vowelsData, setVowelsData] = useState([]);
   const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
   const [firstBoxData, setFirstBoxData] = useState([]);
@@ -25,10 +25,9 @@ export default function CCVCC() {
       }
     };
 
-    //vowels and last box is the same data as exercise four, only change to first box data
     fetchData("vowels", setVowelsData);
-    fetchData("cvcFirstBoxFive", setFirstBoxData);
-    fetchData("cvcLastBoxFour", setLastBoxData);
+    fetchData("cvcFirstBoxSix", setFirstBoxData);
+    fetchData("cvcLastBoxSix", setLastBoxData);
   }, []);
 
   const handleBoxClick = (data, setCurrentIndex) => {
@@ -66,7 +65,7 @@ export default function CCVCC() {
             <h2 className="lg:text-2xl">
               Click the boxes to change the letters
             </h2>
-            <h3 className="lg:text-xl">Exercise Five</h3>
+            <h3 className="lg:text-xl">Exercise Six</h3>
           </div>
           <div className="flex justify-center gap-4 lg:gap-2 my-10 px-6 text-5xl lg:text-8xl">
             <div
