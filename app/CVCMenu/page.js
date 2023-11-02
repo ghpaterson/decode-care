@@ -60,7 +60,7 @@ export default function CVCMenu() {
             title="Exercise Four"
             subTitle="CVCC Words"
             description="This is an example explaining the exercise"
-            linkHref=""
+            linkHref="/CVCC"
             cardColor="bg-gradient-to-b from-white to bg-blue-500"
             imageWidth={150}
             buttonColor="bg-blue-500"

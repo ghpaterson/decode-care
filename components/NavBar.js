@@ -18,7 +18,8 @@ export default function NavBar() {
         currentPathname === "/HFWMenu" ||
         currentPathname === "/CVC" || // at the moment the menu link on CVC will take you back to main menu rather than back to CVCMenu
         currentPathname === "/CCVCa" ||
-        currentPathname === "/CCVCb"
+        currentPathname === "/CCVCb" ||
+        currentPathname === "/CVCC"
     );
     //check if the current pathname is the homepage
     setIsHomePage(currentPathname === "/");

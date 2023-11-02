@@ -83,7 +83,7 @@ export default function CCVCa() {
     <>
       <main className="px-10 lg:px-32 font-poppins">
         <NavBar />
-        <section className="mt-20">
+        <section className="mt-16">
           <div className="flex flex-col justify-center items-center gap-4">
             <h1 className="text-2xl lg:text-4xl">
               Let's Read Real and Nonsense Words
@@ -91,6 +91,7 @@ export default function CCVCa() {
             <h2 className="lg:text-2xl">
               Click the boxes to change the letters
             </h2>
+            <h3 className="lg:text-xl">Exercise Two</h3>
           </div>
           <div className="flex justify-center gap-4 lg:gap-2 my-10 px-6 text-5xl lg:text-8xl">
             <div

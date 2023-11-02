@@ -5,7 +5,7 @@ import { db } from "@/utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import NavBar from "@/components/NavBar";
 
-export default function CVC() {
+export default function CVCC() {
   const [vowelsData, setVowelsData] = useState([]);
   const [currentVowelIndex, setCurrentVowelIndex] = useState(null);
   const [firstBoxData, setFirstBoxData] = useState([]);
@@ -25,9 +25,10 @@ export default function CVC() {
       }
     };
 
+    //vowels and first box is the same data as exercise one, only change to last box data
     fetchData("vowels", setVowelsData);
     fetchData("cvcFirstBoxOne", setFirstBoxData);
-    fetchData("cvcLastBoxOne", setLastBoxData);
+    fetchData("cvcLastBoxFour", setLastBoxData);
   }, []);
 
   const handleBoxClick = (data, setCurrentIndex) => {
@@ -53,11 +54,11 @@ export default function CVC() {
         currentVowelIndex === "u" &&
         randomLastBox === "ck") ||
       (currentFirstBoxIndex === "c" &&
+        currentVowelIndex === "u" &&
+        randomLastBox === "nt") ||
+      (currentFirstBoxIndex === "c" &&
         currentVowelIndex === "o" &&
         randomLastBox === "ck") ||
-      (currentFirstBoxIndex === "w" &&
-        currentVowelIndex === "o" &&
-        randomLastBox === "g") ||
       (currentFirstBoxIndex === "s" &&
         currentVowelIndex === "e" &&
         randomLastBox === "x") ||
@@ -90,7 +91,7 @@ export default function CVC() {
             <h2 className="lg:text-2xl">
               Click the boxes to change the letters
             </h2>
-            <h3 className="lg:text-xl">Exercise One</h3>
+            <h3 className="lg:text-xl">Exercise Four</h3>
           </div>
           <div className="flex justify-center gap-4 lg:gap-2 my-10 px-6 text-5xl lg:text-8xl">
             <div
