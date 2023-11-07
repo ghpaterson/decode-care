@@ -30,6 +30,86 @@ export default function HFWMenu() {
             imageWidth={150}
             buttonColor="bg-yellow-500"
           />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Two"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Three"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Four"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Five"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Six"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Seven"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Eight"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
+          <ExerciseMenuCard
+            imageSrc={yellowTriangle}
+            title="Exercise Nine"
+            subTitle="High Frequency Words"
+            description="This is an example explaining the exercise"
+            linkHref=""
+            cardColor="bg-gradient-to-b from-white to bg-yellow-500"
+            imageWidth={150}
+            buttonColor="bg-yellow-500"
+          />
         </section>
       </main>
     </>
