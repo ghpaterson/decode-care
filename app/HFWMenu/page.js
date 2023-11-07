@@ -25,7 +25,7 @@ export default function HFWMenu() {
             title="Exercise One"
             subTitle="High Frequency Words"
             description="This is an example explaining the exercise"
-            linkHref=""
+            linkHref="/HFWOne"
             cardColor="bg-gradient-to-b from-white to bg-yellow-500"
             imageWidth={150}
             buttonColor="bg-yellow-500"

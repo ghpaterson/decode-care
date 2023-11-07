@@ -21,7 +21,8 @@ export default function NavBar() {
         currentPathname === "/CCVCb" ||
         currentPathname === "/CVCC" ||
         currentPathname === "/CCVCC" ||
-        currentPathname === "/CCCVCCC"
+        currentPathname === "/CCCVCCC" ||
+        currentPathname === "/HFWOne"
     );
     //check if the current pathname is the homepage
     setIsHomePage(currentPathname === "/");
